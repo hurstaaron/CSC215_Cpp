@@ -1,0 +1,24 @@
+# Visual Studio / VS cache
+.vs/
+*.suo
+*.user
+
+# Build output folders
+x64/
+Debug/
+Release/
+
+# C++ build artifacts
+*.ipch
+*.pdb
+*.ilk
+*.obj
+*.tlog
+*.log
+*.idb
+*.iobj
+*.ipdb
+
+# IntelliSense DB
+Browse.VC.db
+Browse.VC.opendb
