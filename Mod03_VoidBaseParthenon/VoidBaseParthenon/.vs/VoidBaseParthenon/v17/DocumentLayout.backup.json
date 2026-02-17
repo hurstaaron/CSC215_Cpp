@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Dev\\School\\CSC215_Cpp\\Mod03_VoidBaseParthenon\\VoidBaseParthenon\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{54C9FCEC-D922-4DA6-AC3C-4E85DCE8205A}|VoidBaseParthenon.vcxproj|C:\\Users\\hurst\\OneDrive\\Documents\\Education\\UAT\\CSC215_CandC\u002B\u002BProgramming\\Mod03\\Void Base Parthenon\\VoidBaseParthenon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "VoidBaseParthenon.cpp",
+              "DocumentMoniker": "C:\\Users\\hurst\\OneDrive\\Documents\\Education\\UAT\\CSC215_CandC\u002B\u002BProgramming\\Mod03\\Void Base Parthenon\\VoidBaseParthenon.cpp",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Users\\hurst\\OneDrive\\Documents\\Education\\UAT\\CSC215_CandC\u002B\u002BProgramming\\Mod03\\Void Base Parthenon\\VoidBaseParthenon.cpp",
+              "ToolTip": "C:\\Users\\hurst\\OneDrive\\Documents\\Education\\UAT\\CSC215_CandC\u002B\u002BProgramming\\Mod03\\Void Base Parthenon\\VoidBaseParthenon.cpp",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Users\\hurst\\OneDrive\\Documents\\Education\\UAT\\CSC215_CandC\u002B\u002BProgramming\\Mod03\\Void Base Parthenon\\VoidBaseParthenon.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-10T17:56:34.213Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
