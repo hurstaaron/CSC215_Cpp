@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36915.13 d17.14
+VisualStudioVersion = 17.14.36915.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CleaningServiceChallenge", "Challenges\CleaningServiceChallenge\CleaningServiceChallenge.vcxproj", "{B3717337-B764-4DD5-868C-7EEEF7B66572}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Random_Numbers_and_Arrays_in_Cpp", "Random_Numbers_and_Arrays_in_Cpp\Random_Numbers_and_Arrays_in_Cpp.vcxproj", "{A13E67C9-680F-4A15-8251-E3A383C32B5D}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tonyGameProject", "tonyGameProject\tonyGameProject.vcxproj", "{EC1F39CA-BADE-4660-A882-45DCF786074A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CppReferencesAssignment", "CppReferencesAssignment\UsingReferencesToHackBankruptTerrorists.vcxproj", "{ED88FE60-BFA8-4178-B161-10557E35C290}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,14 @@ Global
 		{EC1F39CA-BADE-4660-A882-45DCF786074A}.Release|x64.Build.0 = Release|x64
 		{EC1F39CA-BADE-4660-A882-45DCF786074A}.Release|x86.ActiveCfg = Release|Win32
 		{EC1F39CA-BADE-4660-A882-45DCF786074A}.Release|x86.Build.0 = Release|Win32
+		{ED88FE60-BFA8-4178-B161-10557E35C290}.Debug|x64.ActiveCfg = Debug|x64
+		{ED88FE60-BFA8-4178-B161-10557E35C290}.Debug|x64.Build.0 = Debug|x64
+		{ED88FE60-BFA8-4178-B161-10557E35C290}.Debug|x86.ActiveCfg = Debug|Win32
+		{ED88FE60-BFA8-4178-B161-10557E35C290}.Debug|x86.Build.0 = Debug|Win32
+		{ED88FE60-BFA8-4178-B161-10557E35C290}.Release|x64.ActiveCfg = Release|x64
+		{ED88FE60-BFA8-4178-B161-10557E35C290}.Release|x64.Build.0 = Release|x64
+		{ED88FE60-BFA8-4178-B161-10557E35C290}.Release|x86.ActiveCfg = Release|Win32
+		{ED88FE60-BFA8-4178-B161-10557E35C290}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
