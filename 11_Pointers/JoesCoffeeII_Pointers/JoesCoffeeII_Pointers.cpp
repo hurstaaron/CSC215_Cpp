@@ -1,269 +1,150 @@
-// ------------------------------------------------------------
-// Cpp Pointers
-// This program demonstrates how pointers work in C++.
-// It also compares pass-by-value behavior to pointer behavior.
-// The program uses user input, multiple functions, and 3 pointers
-// in main() to meet the assignment requirements.
-// ------------------------------------------------------------
-
-// Add the input/output library so we can use cout and cin.
 #include <iostream>
-
-// Add the string library so we can use string variables.
 #include <string>
-
-// This lets us write cout instead of std::cout, cin instead of std::cin, etc.
 using namespace std;
 
 
-// ------------------------------------------------------------
-// Function Prototypes
+// ------------------------ STEP 1 ----------------------------------
+// Predecare Functions 
 // These tell the compiler what functions exist before main().
-// ------------------------------------------------------------
+// ------------------------------------------------------------------
 
-// Prints a section title to make the program easier to read.
-void printTitle(string title);
-
-// Prints account information using normal values.
-void printAccountData(string ownerName, int joeBalance, int hackedBalance);
-
-// Demonstrates pass by value.
-// This function receives COPIES, so main's original values do not change.
-void normalBalanceCheck(int joeBalance, int hackedBalance);
-
-// Adds money to a balance using a pointer.
-// Because the pointer points to the real variable, the real value changes.
-void applyDepositByPointer(int* balancePtr, int depositAmount);
-
-// Swaps two account balances using pointers.
-// This changes the actual variables in main().
-void swapBalancesByPointer(int* firstBalancePtr, int* secondBalancePtr);
-
-// Changes the owner's name using a string pointer.
-// This proves pointers also work with a different data type.
-void renameOwnerByPointer(string* ownerNamePtr, string newName);
-
-// Reads a non-negative integer from the user with basic validation.
-int getNonNegativeInt(string prompt);
+void printTitle(string title);                                              // Prints a section title to make the program easier to read.
+void printAccountData(string ownerName, int joeBalance, int hackedBalance); // Prints account information using normal values.
+void normalBalanceCheck(int joeBalance, int hackedBalance);                 // This function receives COPIES, so main's original values do not change.
+void applyDepositByPointer(int* balancePtr, int depositAmount);             // Adds money to a balance using a pointer,the pointer points to the real variable, the real value changes.
+void swapBalancesByPointer(int* firstBalancePtr, int* secondBalancePtr);    // Swaps the two account balances using pointers. This changes the actual variables in main().
+void renameOwnerByPointer(string* ownerNamePtr, string newName);            // Changes the owner's name using a string pointer.
+int getNonNegativeInt(string prompt);                                       // Reads a non-negative integer from the user with basic validation.
 
 
-// ------------------------------------------------------------
-// main()
-// This is the control center of the program.
-// The assignment says main should control the other functions.
-// ------------------------------------------------------------
-int main()
-{
-    // Print a title so the user knows what the program is.
-    printTitle("Welcome to Cpp Pointers");
+// ------------------------ STEP 3 ----------------------------------
+// Create main()
+// This is the control center of the program by calling the
+// functions we will use in the program
+// ------------------------------------------------------------------
+int main(){
+    
+    printTitle("Welcome to Cpp Pointers");  // Print a title for the UX and pass string value to parameter
 
-    // Create a string variable for the owner's name.
-    // This gives us one data type: string.
-    string joeOwnerName = "Joe";
-
-    // Create integer variables for the two account balances.
-    // This gives us another data type: int.
-    int joeCoffeeBalance = 0;
-    int hackedAccountBalance = 0;
-
-    // Create another integer variable for a deposit amount.
-    // We will use this later with a pointer function.
-    int depositAmount = 0;
+    // ------------------------ STEP 4 ----------------------------------
+    // Decalre variables to use in main()
+    // ------------------------------------------------------------------
+    string joeOwnerName = "Joe";    // Create a string variable for Joe 
+    int joeCoffeeBalance = 0;       // Create integer variables for the first account balance.
+    int hackedAccountBalance = 0;   // Create integer variables for the second account balance.
+    int depositAmount = 0;          // Create integer variable for a deposit amount. ** Will be used for pointer later **
 
 
-    // --------------------------------------------------------
-    // User Input Section
-    // Ask the user to enter the starting balances.
-    // --------------------------------------------------------
+    // ------------------------ STEP 5 ----------------------------------
+    // Get the user input here for balance info
+    // ------------------------------------------------------------------
+    joeCoffeeBalance = getNonNegativeInt("Enter Joe's Coffee Shop starting balance: $");            // Ask user for Joe's Coffee Shop balance. 
+    hackedAccountBalance = getNonNegativeInt("Enter Hacked Account starting balance: $");           // Ask for the hacked account balance.
+    depositAmount = getNonNegativeInt("Enter a deposit amount to add to Joe's account later: $");   // Ask how much money user wants to deposit into Joe's account later.
+    cout << endl; // Print a blank line for readability and UX.
 
-    // Ask for Joe's Coffee Shop starting balance.
-    joeCoffeeBalance = getNonNegativeInt("Enter Joe's Coffee Shop starting balance: $");
-
-    // Ask for the hacked account starting balance.
-    hackedAccountBalance = getNonNegativeInt("Enter Hacked Account starting balance: $");
-
-    // Ask how much money to deposit into Joe's account later.
-    depositAmount = getNonNegativeInt("Enter a deposit amount to add to Joe's account later: $");
-
-
-    // --------------------------------------------------------
-    // Create 3 pointers in main()
-    // Requirement: create at least two pointers in main that
-    // point to variables with at least two different data types.
-    // We are creating 3 pointers here.
-    // --------------------------------------------------------
-
-    // Pointer #1:
-    // This is an int pointer.
-    // It stores the ADDRESS of joeCoffeeBalance.
-    int* joeBalancePtr = &joeCoffeeBalance;
-
-    // Pointer #2:
-    // This is another int pointer.
-    // It stores the ADDRESS of hackedAccountBalance.
-    int* hackedBalancePtr = &hackedAccountBalance;
-
-    // Pointer #3:
-    // This is a string pointer.
-    // It stores the ADDRESS of joeOwnerName.
-    string* ownerNamePtr = &joeOwnerName;
+    // ------------------------ STEP 6 ----------------------------------
+    // Decalre pointers that will be used to store ADDRESS of balances
+    // ------------------------------------------------------------------
+    int* joeBalancePtr = &joeCoffeeBalance;         // Pointer #1: an int pointer stores the ADDRESS of joeCoffeeBalance.
+    int* hackedBalancePtr = &hackedAccountBalance;  // Pointer #2: an int pointer stores the ADDRESS of the hackedAccountBalance.
+    string* ownerNamePtr = &joeOwnerName;           // Pointer #3: a string pointer stores the ADDRESS of joeOwnerName.
 
 
-    // --------------------------------------------------------
-    // Print starting data
-    // --------------------------------------------------------
-    printTitle("Original Account Data");
+    printTitle("Original Account Data");  // Call fuction and pass string by value
+    printAccountData(joeOwnerName, joeCoffeeBalance, hackedAccountBalance); // Print the original values before things are changed in the functions.
+                        
+    cout << endl; // Print a blank line for readability and UX.
 
-    // Print the original values before any function changes happen.
-    printAccountData(joeOwnerName, joeCoffeeBalance, hackedAccountBalance);
-
-    // Print a blank line for readability.
-    cout << endl;
-
-
-    // --------------------------------------------------------
-    // Show pointer basics in main()
-    // This helps the learner see what each pointer is doing.
-    // --------------------------------------------------------
-    printTitle("Pointer Basics in main()");
-
-    // Print the memory address stored inside joeBalancePtr.
+    // ------------------------------------------------------------------
+    // Tell the user the memory location where the balance is stored
+    // These statements will print out an ADDRESS like: 000000648F15F354
+    // ------------------------------------------------------------------
+    printTitle("This is How the ADDRESS Looks in Memory");
     cout << "joeBalancePtr stores the address of joeCoffeeBalance: " << joeBalancePtr << endl;
-
-    // Print the memory address stored inside hackedBalancePtr.
     cout << "hackedBalancePtr stores the address of hackedAccountBalance: " << hackedBalancePtr << endl;
-
-    // Print the memory address stored inside ownerNamePtr.
     cout << "ownerNamePtr stores the address of joeOwnerName: " << ownerNamePtr << endl;
 
-    // Dereference joeBalancePtr to print the VALUE at that address.
-    cout << "*joeBalancePtr gives the value inside Joe's balance variable: $" << *joeBalancePtr << endl;
+    cout << endl; // Print a blank line for readability and UX.
 
-    // Dereference hackedBalancePtr to print the VALUE at that address.
-    cout << "*hackedBalancePtr gives the value inside Hacked Account: $" << *hackedBalancePtr << endl;
+    printTitle("This is How the VALUE Looks in Memory");
+    cout << "*joeBalancePtr gives the value inside Joe's balance variable: $" << *joeBalancePtr << endl; // Dereference joeBalancePtr to print the VALUE at that address.
+    cout << "*hackedBalancePtr gives the value inside Hacked Account: $" << *hackedBalancePtr << endl; // Dereference hackedBalancePtr to print the VALUE at that address.
+    cout << "*ownerNamePtr gives the owner name value: " << *ownerNamePtr << endl; // Dereference ownerNamePtr to print the string value at that address.
 
-    // Dereference ownerNamePtr to print the string value at that address.
-    cout << "*ownerNamePtr gives the owner name value: " << *ownerNamePtr << endl;
+    cout << endl; // Print a blank line for readability and UX.
 
-    // Print a blank line for readability.
-    cout << endl;
+    printTitle("This is the Pass By Value Example");
+    normalBalanceCheck(joeCoffeeBalance, hackedAccountBalance); // Call the function and pass values of the both account balances.
+    printTitle("Balances After Pass By Value Function"); // normalBalanceCheck() ends, prove to the user the original values did not change.
 
+    printAccountData(joeOwnerName, joeCoffeeBalance, hackedAccountBalance); // Print the balances again from main(). They should still be the original starting values.
 
-    // --------------------------------------------------------
-    // Pass By Value Example
-    // This function gets copies only.
-    // It will NOT change the real balances in main().
-    // --------------------------------------------------------
-    printTitle("Pass By Value Example");
-
-    // Call the function and send copies of the two balances.
-    normalBalanceCheck(joeCoffeeBalance, hackedAccountBalance);
-
-    // After the function ends, prove the original values did not change.
-    printTitle("Balances After Pass By Value Function");
-
-    // Print the balances again from main().
-    // They should still be the original starting values.
-    printAccountData(joeOwnerName, joeCoffeeBalance, hackedAccountBalance);
-
-    // Print a blank line for readability.
-    cout << endl;
+    cout << endl; // Print a blank line for readability and UX.
 
 
     // --------------------------------------------------------
-    // Pointer Function #1
+    // Code block: Pointer Function #1
     // Use a pointer to change the real Joe balance.
-    // This satisfies the requirement that a value changed in a
-    // function remains changed outside the function.
+    // The value remains changed outside the function.
     // --------------------------------------------------------
     printTitle("Pointer Function Example: Deposit Into Joe's Account");
-
-    // Call the deposit function and pass Joe's balance pointer.
-    applyDepositByPointer(joeBalancePtr, depositAmount);
-
-    // Prove back in main() that Joe's real balance changed.
-    cout << "Back in main(), Joe's actual balance is now: $" << joeCoffeeBalance << endl;
-
-    // Print a blank line for readability.
-    cout << endl;
+    applyDepositByPointer(joeBalancePtr, depositAmount); // Call the deposit function and pass Joe's balance pointer.
+    cout << "Back in main(), Joe's actual balance is now: $" << joeCoffeeBalance << endl; // Prove back in main() that Joe's real balance changed.
+    cout << endl; // Print a blank line for readability and UX.
 
 
     // --------------------------------------------------------
-    // Pointer Function #2
+    // Code block: Pointer Function #2
     // Swap the real balances using pointers.
     // This changes the actual variables in main().
     // --------------------------------------------------------
     printTitle("Pointer Function Example: Swap the Two Balances");
+    swapBalancesByPointer(joeBalancePtr, hackedBalancePtr); // Call the swap function using the two int pointers.
 
-    // Call the swap function using the two int pointers.
-    swapBalancesByPointer(joeBalancePtr, hackedBalancePtr);
-
-    // Prove in main() that the actual variables were changed.
+    // Display the actual variables enterd by the user were changed.
     cout << "Back in main() after swap:" << endl;
     cout << "Joe's Coffee Shop balance is now: $" << joeCoffeeBalance << endl;
     cout << "Hacked Account balance is now: $" << hackedAccountBalance << endl;
-
-    // Print a blank line for readability.
-    cout << endl;
+    cout << endl; // Print a blank line for readability and UX.
 
 
     // --------------------------------------------------------
-    // Pointer Function #3
-    // Change the string variable through a string pointer.
-    // This shows pointers can work with a different data type.
+    // Code block: Pointer Function #3
+    // Change the string variable with pointer for a string.
     // --------------------------------------------------------
     printTitle("Pointer Function Example: Change Owner Name");
-
-    // Call the rename function and pass the string pointer.
-    renameOwnerByPointer(ownerNamePtr, "Joe (Recovered Account)");
-
-    // Prove in main() that the real string changed.
-    cout << "Back in main(), the owner name is now: " << joeOwnerName << endl;
-
-    // Print a blank line for readability.
-    cout << endl;
+    renameOwnerByPointer(ownerNamePtr, "Joe (Recovered Account)"); // Call the rename function and pass the string pointer.
+    cout << "Back in main(), the owner name is now: " << joeOwnerName << endl; // Prove in main() that the real string changed.
+    cout << endl; // Print a blank line for readability and UX.
 
 
     // --------------------------------------------------------
-    // Final Output Section
-    // Print all final values after the pointer-based changes.
+    // Print all final values AFTER the pointer-based changes.
     // --------------------------------------------------------
     printTitle("Final Account Data After Pointer Functions");
+    printAccountData(joeOwnerName, joeCoffeeBalance, hackedAccountBalance); // Print the final account data.
 
-    // Print the final account data.
-    printAccountData(joeOwnerName, joeCoffeeBalance, hackedAccountBalance);
-
-    // Print a closing message.
-    cout << endl;
-    cout << "Program ended successfully." << endl;
-
-    // Return 0 to show the program finished correctly.
+    cout << endl; // Print a blank line for readability and UX.
+  
     return 0;
 }
 
 
-// ------------------------------------------------------------
-// Function Definitions
-// ------------------------------------------------------------
-
-
+// ------------------------ STEP 2 ----------------------------------
+// Declare Functions
+// ------------------------------------------------------------------
 // Prints a formatted title line.
-void printTitle(string title)
-{
-    // Print a top border line.
-    cout << "------------------------------------------------------------" << endl;
-
-    // Print the title text.
-    cout << title << endl;
-
-    // Print a bottom border line.
+void printTitle(string title){
+    
+    cout << "------------------------------------------------------------" << endl; 
+    cout << title << endl; // Print the argument passed by value to fucntion parameter 'title'
     cout << "------------------------------------------------------------" << endl;
 }
 
 
 // Prints the account data in a clean format.
-void printAccountData(string ownerName, int joeBalance, int hackedBalance)
-{
+void printAccountData(string ownerName, int joeBalance, int hackedBalance){
     // Print the account owner's name.
     cout << "Owner Name: " << ownerName << endl;
 
@@ -277,8 +158,7 @@ void printAccountData(string ownerName, int joeBalance, int hackedBalance)
 
 // Demonstrates pass by value.
 // This function only changes local copies, not the originals.
-void normalBalanceCheck(int joeBalance, int hackedBalance)
-{
+void normalBalanceCheck(int joeBalance, int hackedBalance){
     // Explain what the function received.
     cout << "Inside normalBalanceCheck() BEFORE local swap:" << endl;
     cout << "Joe's Coffee Shop balance copy: $" << joeBalance << endl;
@@ -306,8 +186,7 @@ void normalBalanceCheck(int joeBalance, int hackedBalance)
 
 
 // Adds money to a balance through an int pointer.
-void applyDepositByPointer(int* balancePtr, int depositAmount)
-{
+void applyDepositByPointer(int* balancePtr, int depositAmount){
     // Explain what this function is about to do.
     cout << "Inside applyDepositByPointer() BEFORE deposit:" << endl;
 
@@ -329,8 +208,7 @@ void applyDepositByPointer(int* balancePtr, int depositAmount)
 
 
 // Swaps two balances using pointers.
-void swapBalancesByPointer(int* firstBalancePtr, int* secondBalancePtr)
-{
+void swapBalancesByPointer(int* firstBalancePtr, int* secondBalancePtr){
     // Explain the values before the swap.
     cout << "Inside swapBalancesByPointer() BEFORE swap:" << endl;
     cout << "First balance pointed to: $" << *firstBalancePtr << endl;
@@ -354,8 +232,7 @@ void swapBalancesByPointer(int* firstBalancePtr, int* secondBalancePtr)
 
 
 // Changes a string variable using a string pointer.
-void renameOwnerByPointer(string* ownerNamePtr, string newName)
-{
+void renameOwnerByPointer(string* ownerNamePtr, string newName){
     // Show the old owner name before changing it.
     cout << "Inside renameOwnerByPointer() BEFORE change: " << *ownerNamePtr << endl;
 
@@ -368,14 +245,12 @@ void renameOwnerByPointer(string* ownerNamePtr, string newName)
 
 
 // Gets a non-negative integer from the user with basic validation.
-int getNonNegativeInt(string prompt)
-{
+int getNonNegativeInt(string prompt){
     // Create a variable to store the user's number.
     int value = 0;
 
     // Start an infinite loop until valid input is entered.
-    while (true)
-    {
+    while (true)    {
         // Ask the user for input.
         cout << prompt;
 
@@ -383,8 +258,7 @@ int getNonNegativeInt(string prompt)
         cin >> value;
 
         // Check whether the input succeeded and the number is non-negative.
-        if (cin.fail() || value < 0)
-        {
+        if (cin.fail() || value < 0)        {
             // Print an error message if the input was bad.
             cout << "Invalid input. Please enter a non-negative whole number." << endl;
 
