@@ -19,12 +19,12 @@ int getNonNegativeInt(string prompt);                                       // R
 
 // ------------------------ STEP 3 ----------------------------------
 // Create main()
-// This is the control center of the program by calling the
-// functions we will use in the program
+// This is where we control the program by 
+// calling the functions we will use
 // ------------------------------------------------------------------
 int main(){
     
-    printTitle("Welcome to Cpp Pointers");  // Print a title for the UX and pass string value to parameter
+    printTitle("Welcome to Joe's Coffee Shoppe");  // Print a title for the UX and pass string value to parameter
 
     // ------------------------ STEP 4 ----------------------------------
     // Decalre variables to use in main()
@@ -38,9 +38,9 @@ int main(){
     // ------------------------ STEP 5 ----------------------------------
     // Get the user input here for balance info
     // ------------------------------------------------------------------
-    joeCoffeeBalance = getNonNegativeInt("Enter Joe's Coffee Shop starting balance: $");            // Ask user for Joe's Coffee Shop balance. 
-    hackedAccountBalance = getNonNegativeInt("Enter Hacked Account starting balance: $");           // Ask for the hacked account balance.
-    depositAmount = getNonNegativeInt("Enter a deposit amount to add to Joe's account later: $");   // Ask how much money user wants to deposit into Joe's account later.
+    joeCoffeeBalance = getNonNegativeInt("Enter Joe's Coffee Shop starting balance: $");      // Ask user for Joe's Coffee Shop balance. 
+    hackedAccountBalance = getNonNegativeInt("Enter Hacked Account starting balance: $");     // Ask for the hacked account balance.
+    depositAmount = getNonNegativeInt("Enter a deposit amount to add to Joe's account: $");   // Ask how much money user wants to deposit into Joe's account later.
     cout << endl; // Print a blank line for readability and UX.
 
     // ------------------------ STEP 6 ----------------------------------
@@ -58,25 +58,24 @@ int main(){
 
     // ------------------------------------------------------------------
     // Tell the user the memory location where the balance is stored
-    // These statements will print out an ADDRESS like: 000000648F15F354
+    // Statements will print a memory ADDRESS like: 000000648F15F354
     // ------------------------------------------------------------------
-    printTitle("This is How the ADDRESS Looks in Memory");
+    printTitle("This is how the ADDRESS looks in Memory");
     cout << "joeBalancePtr stores the address of joeCoffeeBalance: " << joeBalancePtr << endl;
     cout << "hackedBalancePtr stores the address of hackedAccountBalance: " << hackedBalancePtr << endl;
     cout << "ownerNamePtr stores the address of joeOwnerName: " << ownerNamePtr << endl;
 
     cout << endl; // Print a blank line for readability and UX.
 
-    printTitle("This is How the VALUE Looks in Memory");
-    cout << "*joeBalancePtr gives the value inside Joe's balance variable: $" << *joeBalancePtr << endl; // Dereference joeBalancePtr to print the VALUE at that address.
-    cout << "*hackedBalancePtr gives the value inside Hacked Account: $" << *hackedBalancePtr << endl; // Dereference hackedBalancePtr to print the VALUE at that address.
+    printTitle("This is how the VALUE looks in Memory");
+    cout << "*joeBalancePtr gives the value inside Joe's balance variable: $" << *joeBalancePtr << endl; // joeBalancePtr to print the VALUE at that address.
+    cout << "*hackedBalancePtr gives the value inside Hacked Account: $" << *hackedBalancePtr << endl; // hackedBalancePtr to print the VALUE at that address.
     cout << "*ownerNamePtr gives the owner name value: " << *ownerNamePtr << endl; // Dereference ownerNamePtr to print the string value at that address.
 
     cout << endl; // Print a blank line for readability and UX.
 
-    printTitle("This is the Pass By Value Example");
+    printTitle("Uses PASS BY VALUE when calling normalBalanceCheck() ");
     normalBalanceCheck(joeCoffeeBalance, hackedAccountBalance); // Call the function and pass values of the both account balances.
-    printTitle("Balances After Pass By Value Function"); // normalBalanceCheck() ends, prove to the user the original values did not change.
 
     printAccountData(joeOwnerName, joeCoffeeBalance, hackedAccountBalance); // Print the balances again from main(). They should still be the original starting values.
 
@@ -85,12 +84,12 @@ int main(){
 
     // --------------------------------------------------------
     // Code block: Pointer Function #1
-    // Use a pointer to change the real Joe balance.
+    // Use a pointer to change the Joe's Coffee 'real' balance.
     // The value remains changed outside the function.
     // --------------------------------------------------------
     printTitle("Pointer Function Example: Deposit Into Joe's Account");
     applyDepositByPointer(joeBalancePtr, depositAmount); // Call the deposit function and pass Joe's balance pointer.
-    cout << "Back in main(), Joe's actual balance is now: $" << joeCoffeeBalance << endl; // Prove back in main() that Joe's real balance changed.
+    cout << "Joe's actual balance is now: $" << joeCoffeeBalance << endl; // Prove back in main() that Joe's real balance changed.
     cout << endl; // Print a blank line for readability and UX.
 
 
@@ -99,11 +98,11 @@ int main(){
     // Swap the real balances using pointers.
     // This changes the actual variables in main().
     // --------------------------------------------------------
-    printTitle("Pointer Function Example: Swap the Two Balances");
+    printTitle("Pointer Function Swaps the balances");
     swapBalancesByPointer(joeBalancePtr, hackedBalancePtr); // Call the swap function using the two int pointers.
 
     // Display the actual variables enterd by the user were changed.
-    cout << "Back in main() after swap:" << endl;
+    cout << "Back in main() after swap" << endl;
     cout << "Joe's Coffee Shop balance is now: $" << joeCoffeeBalance << endl;
     cout << "Hacked Account balance is now: $" << hackedAccountBalance << endl;
     cout << endl; // Print a blank line for readability and UX.
@@ -122,7 +121,7 @@ int main(){
     // --------------------------------------------------------
     // Print all final values AFTER the pointer-based changes.
     // --------------------------------------------------------
-    printTitle("Final Account Data After Pointer Functions");
+    printTitle("Final Account Data AFTER using Pointers");
     printAccountData(joeOwnerName, joeCoffeeBalance, hackedAccountBalance); // Print the final account data.
 
     cout << endl; // Print a blank line for readability and UX.
@@ -130,16 +129,44 @@ int main(){
     return 0;
 }
 
-
 // ------------------------ STEP 2 ----------------------------------
 // Declare Functions
 // ------------------------------------------------------------------
-// Prints a formatted title line.
-void printTitle(string title){
+
+// Prints a formatted title line to separate different 
+// aspects of the code for UX an dreadability
+// Contains logic so title will always be in the center
+void printTitle(string title) {
+
+    cout << endl; // For readability and UX
+    int minimumWidth = 50; // Declare width and instantiate minimum length of border
+    int titleLength = title.length(); // Get the length of the title
+
+    // Decide width of the border line by
+    // Using the larger of:
+    // 1) the minimum width, or
+    // 2) the length of the title
+    // We want to prevent the boarder from being smaller than the title
+    // But not too much larger either (50 chars tops)
+    int width = minimumWidth;
+    if (titleLength > width) {
+        width = titleLength;
+    }
+
+    string border(width, '='); // creates the border
+    int totalSpaces = width - titleLength; // Calculates spaces to the left and right of title
     
-    cout << "------------------------------------------------------------" << endl; 
-    cout << title << endl; // Print the argument passed by value to fucntion parameter 'title'
-    cout << "------------------------------------------------------------" << endl;
+    // Split the extra spaces evenly between right and left
+    int leftSpaces = totalSpaces / 2; 
+    int rightSpaces = totalSpaces - leftSpaces;
+   
+
+    // Print the border and title for the user experience
+    cout << border << endl; 
+    cout << string(leftSpaces, ' ') << title << string(rightSpaces, ' ') << endl;
+    cout << border << endl;
+
+    return; // return to main at the line after printTitle() was called 
 }
 
 
