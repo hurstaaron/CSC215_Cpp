@@ -7,7 +7,6 @@ using namespace std;
 // Predecare Functions 
 // These tell the compiler what functions exist before main().
 // ------------------------------------------------------------------
-
 void printTitle(string title);                                              // Prints a section title to make the program easier to read.
 void printAccountData(string ownerName, int joeBalance, int hackedBalance); // Prints account information using normal values.
 void normalBalanceCheck(int joeBalance, int hackedBalance);                 // This function receives COPIES, so main's original values do not change.
@@ -27,13 +26,16 @@ int main(){
     printTitle("Welcome to Joe's Coffee Shoppe");  // Print a title for the UX and pass string value to parameter
 
     // ------------------------ STEP 4 ----------------------------------
-    // Decalre variables to use in main()
+    // Decalre variables to use in main() and ask for Manager name
     // ------------------------------------------------------------------
-    string joeOwnerName = "Joe";    // Create a string variable for Joe 
+    string joeManagerName = " ";    // Create a string variable for Joe 
     int joeCoffeeBalance = 0;       // Create integer variables for the first account balance.
     int hackedAccountBalance = 0;   // Create integer variables for the second account balance.
     int depositAmount = 0;          // Create integer variable for a deposit amount. ** Will be used for pointer later **
-
+    
+    cout << "Enter you username: ";
+    cin >> joeManagerName;
+    cout << "Loading " << joeManagerName << "'s profile now.\n";
 
     // ------------------------ STEP 5 ----------------------------------
     // Get the user input here for balance info
@@ -48,11 +50,11 @@ int main(){
     // ------------------------------------------------------------------
     int* joeBalancePtr = &joeCoffeeBalance;         // Pointer #1: an int pointer stores the ADDRESS of joeCoffeeBalance.
     int* hackedBalancePtr = &hackedAccountBalance;  // Pointer #2: an int pointer stores the ADDRESS of the hackedAccountBalance.
-    string* ownerNamePtr = &joeOwnerName;           // Pointer #3: a string pointer stores the ADDRESS of joeOwnerName.
+    string* ownerNamePtr = &joeManagerName;           // Pointer #3: a string pointer stores the ADDRESS of joeOwnerName.
 
 
     printTitle("Original Account Data");  // Call fuction and pass string by value
-    printAccountData(joeOwnerName, joeCoffeeBalance, hackedAccountBalance); // Print the original values before things are changed in the functions.
+    printAccountData(joeManagerName, joeCoffeeBalance, hackedAccountBalance); // Print the original values before things are changed in the functions.
                         
     cout << endl; // Print a blank line for readability and UX.
 
@@ -77,7 +79,7 @@ int main(){
     printTitle("Uses PASS BY VALUE when calling normalBalanceCheck() ");
     normalBalanceCheck(joeCoffeeBalance, hackedAccountBalance); // Call the function and pass values of the both account balances.
 
-    printAccountData(joeOwnerName, joeCoffeeBalance, hackedAccountBalance); // Print the balances again from main(). They should still be the original starting values.
+    printAccountData(joeManagerName, joeCoffeeBalance, hackedAccountBalance); // Print the balances again from main(). They should still be the original starting values.
 
     cout << endl; // Print a blank line for readability and UX.
 
@@ -114,7 +116,7 @@ int main(){
     // --------------------------------------------------------
     printTitle("Pointer Function Example: Change Owner Name");
     renameOwnerByPointer(ownerNamePtr, "Joe (Recovered Account)"); // Call the rename function and pass the string pointer.
-    cout << "Back in main(), the owner name is now: " << joeOwnerName << endl; // Prove in main() that the real string changed.
+    cout << "Back in main(), the owner name is now: " << joeManagerName << endl; // Prove in main() that the real string changed.
     cout << endl; // Print a blank line for readability and UX.
 
 
@@ -122,7 +124,7 @@ int main(){
     // Print all final values AFTER the pointer-based changes.
     // --------------------------------------------------------
     printTitle("Final Account Data AFTER using Pointers");
-    printAccountData(joeOwnerName, joeCoffeeBalance, hackedAccountBalance); // Print the final account data.
+    printAccountData(joeManagerName, joeCoffeeBalance, hackedAccountBalance); // Print the final account data.
 
     cout << endl; // Print a blank line for readability and UX.
   
@@ -171,9 +173,9 @@ void printTitle(string title) {
 
 
 // Prints the account data in a clean format.
-void printAccountData(string ownerName, int joeBalance, int hackedBalance){
+void printAccountData(string userName, int joeBalance, int hackedBalance){
     // Print the account owner's name.
-    cout << "Owner Name: " << ownerName << endl;
+    cout << "Account Update Username: " << userName << endl;
 
     // Print Joe's Coffee Shop balance.
     cout << "Joe's Coffee Shop balance: $" << joeBalance << endl;
