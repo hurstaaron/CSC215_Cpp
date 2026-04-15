@@ -1,0 +1,27 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build WhisperingToll",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "-Wall",
+                "-Wextra",
+                "-o",
+                "${workspaceFolder}\\WhisperingToll.exe",
+                "${workspaceFolder}\\main.cpp",
+                "${workspaceFolder}\\scenarios.cpp",
+                "${workspaceFolder}\\encounters.cpp",
+                "${workspaceFolder}\\utilities.cpp"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compiles all CPP files into WhisperingToll.exe"
+        }
+    ]
+}

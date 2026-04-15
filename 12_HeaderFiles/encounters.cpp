@@ -102,7 +102,7 @@ void bossBattle() {
          << "tunnels. Still, you remain standing.\n\n"
          << "The Hunger leans close. You smell grave-dirt and sweet "
          << "incense.\n\n"
-         << "\"Rally, little ember... or run.\"\n\n";
+         << "Rally, little ember... or run.\"\n\n";
 
 
     string prompt = "   [A] Rally — stand your ground and fight\n"
