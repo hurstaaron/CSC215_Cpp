@@ -29,7 +29,7 @@ int main() {
 
     // ----- Describe the program to the user -----
     std::cout << "=====================================" << std::endl;
-    std::cout << "  ADVENTURER'S GUILD ROSTER v1.0    " << std::endl;
+    std::cout << "  ADVENTURER'S GUILD ROSTER v1.0    "  << std::endl;
     std::cout << "=====================================" << std::endl;
     std::cout << "This program keeps track of heroes"    << std::endl;
     std::cout << "and their weapons in our guild."       << std::endl;
