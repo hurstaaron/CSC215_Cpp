@@ -13,12 +13,11 @@ using namespace std;    // Standard namespace makes it so we don't have to write
 // A Space Marine object exists and here are the attributes 
 // (what it knows) and the methods (what it can do)
 class SpaceMarine{
-// =============== ENCAPSULATION!!! - DECLARE PRIVATE ===============
-// The "private" access modifier means only THIS calss can use these variables
-// This is an example of ENCAPSULATION in OOP, one of the most important and 
-// powerful aspects of OOP. Encapsulation allows us to hide our data inside
-// this class and only allow "controlled access" through getters and setters.
-// The dev decides who can read the data, change it, and when. 
+// =============== USE ENCAPSULATION!!! - DECLARE PRIVATE ===============
+// =============== ACCESS MODIFIER: PRIVATE ===============
+// Only THIS class can use these variables. 
+// Encapsulation hides our data inside the class allowing "controlled access" 
+// through the getter and setter functions.  
 private:
     string name, role;  // The Space Marine's name and battlefield role
     int combatPower;    // This number rates strength in battle
@@ -34,19 +33,16 @@ public:
     SpaceMarine(string marineName, string marineRole, int power, bool veteran);
 
     // =============== DECLARE GETTERS ===============  
-    // Getter methods return the private variables and allow the outside world (public) 
-    // to read the values through these 'getter methods".
-    // Use "const" at the end so they will NOT change the objects data.
-    // Notice we just add "get" infront of our variable name
+    // Private variables allowing the 'outside world' (public) to read the values.
+    // Using "const" at the end so they will NOT change the objects data.
     string getName() const;     
     string getRole() const;  
     int getCombatPower() const;
     bool getIsVeteran() const;
     
     // =============== DECLARE SETTERS ===============  
-    // Setter methods are functions that will allow CHANGES to the private variables.
-    // The outside world (public) will have the abilitiy to WRITE new data through them.
-    // Notice we just add "set" infront of our variable name. 
+    // Setter methods are functions that allow CHANGES to the private variables.
+    // The 'outside world' (public) will have the abilitiy to WRITE new data through them.
     void setName(string newName);
     void setRole(string newRole);
     void setCombatPower(int newPower);
